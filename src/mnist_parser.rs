@@ -14,7 +14,8 @@ pub fn read_idx_images(path: & str) -> (u32, u32, u32, Vec<u8>) {
 
 	let num_images = reader.read_u32::<BigEndian>().unwrap();
 	let rows = reader.read_u32::<BigEndian>().unwrap();
-	
+	let cols = reader.read_u32::<BigEndian>().unwrap();
+		
 	let mut data = vec![0u8; (num_images * rows * cols) as usize];
 	reader.read_exact(&mut data).unwrap();
 
@@ -35,7 +36,7 @@ pub fn read_idx_labels(path: &str) -> (u32, Vec<u8>) {
 	assert_eq!(magic, 2049 , "Not an IDX1 label file");
 
 
-	let mut labels = vec![0u8; num_label as usize];
+	let mut labels = vec![0u8; num_labels as usize];
 	reader.read_exact(&mut labels).unwrap();
 	
 	(num_labels, labels)

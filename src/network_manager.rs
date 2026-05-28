@@ -4,9 +4,6 @@ use crate::newtork::*;
 
 
 
-
-
-
 pub fn write_to_file(net : &Network,name : &String, path : &String){
 	//the layers hold the activations so they do not matter
 	//we will just be writing the connections one strata at a time
@@ -19,24 +16,34 @@ pub fn write_to_file(net : &Network,name : &String, path : &String){
 	
 	let cons = net.cons.clone();
 
+	//there surely must be a better way to read this other than a bunch of nested fors
 	for con in cons {
+	
+		let weights = cons.weights.clone();
+		
+		file.write_all(b"weights\n");
 		
 		for i in 0..weights.len(){
-		
-			let neuron_cons = weights[i];
 
+			let neuron_cons = weights[0];
 
-			for neuron_con in neuron_cons{
-
+			for con in neuron_cons{
 				
-
+				file.write_all(con);
+			
 
 			}
 
+		file_write_all(b"\n");
+		
 	
 		}
 
+		let biases = cons.biases.clone();
 
+		for i in 0..biases.len(){
+
+		}
 
 	}
 

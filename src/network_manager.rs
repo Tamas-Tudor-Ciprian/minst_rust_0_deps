@@ -41,7 +41,11 @@ pub fn write_to_file(net : &Network,name : &String, path : &String){
 
 		let biases = cons.biases.clone();
 
-		for i in 0..biases.len(){
+		file.write_all(b"biases");
+		for bias in biases{
+
+			file.write_all(bias);		
+			file.write_all(b" ");
 
 		}
 

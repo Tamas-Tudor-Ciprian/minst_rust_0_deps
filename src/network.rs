@@ -86,9 +86,9 @@ impl Layer {
 
 
 #[derive(Clone)]
-struct Connections{
-        weights: Vec<Vec<f32>>,
-        biases: Vec<f32>,
+pub struct Connections{
+       pub weights: Vec<Vec<f32>>,
+       pub biases: Vec<f32>,
 }
 
 
@@ -144,15 +144,15 @@ impl Connections{
 
 
 
-struct Network{
+pub struct Network{
         layers: Vec<Layer>,
-        cons: Vec<Connections>
+        pub cons: Vec<Connections>
 }
 
 
 
 impl Network{
-        fn new(layers: Vec<usize>) -> Self{
+        pub fn new(layers: Vec<usize>) -> Self{
 
 
                 let mut cons = vec![];
@@ -174,6 +174,20 @@ impl Network{
                 }
 
         }
+
+	//when getting a net from a file a Connections only constructor is needed
+	pub fn new_from_cons(cons: Vec<Connections>)-> Self{
+		
+		let empty_vec = vec![];
+
+		Self{
+			cons:cons,
+			layers:empty_vec,
+
+		}
+	
+	}
+
 
         /*
         it is to be mentioned that the first layer is to be the same size as the already declared

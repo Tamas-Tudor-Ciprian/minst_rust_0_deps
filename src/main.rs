@@ -32,6 +32,22 @@ fn main(){
 
 	//now we should just declare the network and start training
 	
+	//first we start with the size vector 
+	//first is the input layer 28x28 some hidden ones where I winged it and of course 10 outputs for 10 digits
+	let architecture = vec![784,20,20,20,10];
+
+	let network = Network::new(architecture);
+
+	/*now teoretically I should just start training, I think I will make this a console app with parameters
+	so I can always be loading a model and train further at any time instead of always having to start from scratch */
+
+	//first I'll try training like this
+
+	
+
+
+
+			
 
 
 }
